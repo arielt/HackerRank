@@ -4,6 +4,9 @@ import java.text.*;
 import java.math.*;
 import java.util.regex.*;
 
+/*
+ * https://www.hackerrank.com/challenges/no-prefix-set
+ */
 public class Solution {
 
     public static class TrieNode {
@@ -64,7 +67,7 @@ public class Solution {
                 } else {
                     children[charPos].isWord = true;
                     if (children[charPos].count > 1) {
-                        passedWord = true;                        
+                        passedWord = true;
                     }
                 }
             }
@@ -115,17 +118,17 @@ public class Solution {
             return 0;
         else
             return root.queryCount(word.toLowerCase());
-       } 
+       }
    }
 
     public static boolean passedWord;
-    
+
     public static void main(String[] args) {
-        Trie trie = new Trie();        
+        Trie trie = new Trie();
 
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
-        
+
         passedWord = false;
 
         for (int i = 0; i < n; i++) {
@@ -137,7 +140,7 @@ public class Solution {
                 return;
             }
         }
-        
+
         System.out.println("GOOD SET");
     }
 }

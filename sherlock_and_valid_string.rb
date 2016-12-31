@@ -1,3 +1,7 @@
+#
+# https://www.hackerrank.com/challenges/sherlock-and-valid-string
+#
+
 s = gets
 hash = {}
 
@@ -25,7 +29,7 @@ if sizes.size == 1
     exit 0
 end
 
-if (sizes.size == 2) && 
+if (sizes.size == 2) &&
    (sizes.values[0] == 1 ||
    sizes.values[1] == 1)
     puts "YES"

@@ -6,6 +6,9 @@
 #include <limits.h>
 #include <stdbool.h>
 
+/*
+ * https://www.hackerrank.com/challenges/array-left-rotation
+ */
 int main(){
     int n;
     int k;
@@ -19,8 +22,8 @@ int main(){
     int *b = malloc(ns);
 
     memcpy(b, a, ns);
-    memcpy(a, b+k, (n-k)*sizeof(int));
-    memcpy(a+n-k, b, k*sizeof(int));
+    memcpy(a, b + k, (n-k) * sizeof(int));
+    memcpy(a + n - k, b, k * sizeof(int));
 
     for(int a_i = 0; a_i < n; a_i++){
        printf("%d ",a[a_i]);

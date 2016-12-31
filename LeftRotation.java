@@ -4,6 +4,9 @@ import java.text.*;
 import java.math.*;
 import java.util.regex.*;
 
+/*
+ * https://www.hackerrank.com/challenges/array-left-rotation
+ */
 public class Solution {
 
     private static void shift(int a[], int n) {

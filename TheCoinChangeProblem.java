@@ -4,6 +4,10 @@ import java.text.*;
 import java.math.*;
 import java.util.regex.*;
 
+/*
+ * https://www.hackerrank.com/challenges/coin-change
+ */
+
 public class Solution {
 
     private static long coins(int N, int M, int[] C) {

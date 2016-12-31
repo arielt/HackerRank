@@ -7,6 +7,9 @@
 #include <string>
 using namespace std;
 
+/*
+ * https://www.hackerrank.com/challenges/sparse-arrays
+ */
 
 int main() {
     int n;
@@ -26,7 +29,7 @@ int main() {
             it->second = (it->second + 1);
         }
     }
-    
+
     cin >> n;
     for (int i=0; i < n; i++) {
         cin >> s;
@@ -37,6 +40,5 @@ int main() {
             cout << it->second << endl;
         }
     }
-    return 0;   
+    return 0;
 }
-
