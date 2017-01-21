@@ -7,34 +7,48 @@
 
 require 'pp'
 
+# build NF for the word
 def sorts(s)
   s = s.chars.sort.join
 end
 
-# recursion
-def rec_s(s, start, rv, rvi, xd)
-  if s.size == start
-    rv[rvi][:fit] = true
-    return
-  end
-
-  for i in start .. (s.size - 1)
+# recursion: find partitions
+def rec_s(s, start, prefix, xd, rv)
+  for i in start .. s.size - 1
     word = s[start..i]
     sorted = sorts(word)
     if xd.has_key?(sorted)
-      rv[rvi][:value] << sorted
-      rv << {value: rv[rvi][:value].clone, fit: false}
-      rec_s(s, i + 1, rv, rvi, xd)
-      rvi = rvi + 1
+      new_prefix = prefix.clone << sorted
+      if i == s.size - 1
+        rv << new_prefix
+        return
+      else
+        rec_s(s, i + 1, new_prefix, xd, rv)
+      end
+    end
+  end
+end
+
+# print all possible strings for NF
+def print_arr(arr, i, prefix, xd, rv)
+  vals = xd[arr[i]]
+  vals.each do |v|
+    new_prefix = prefix.clone << v
+    if i == arr.size - 1
+      rv << new_prefix
+    else
+      print_arr(arr, i+1, new_prefix, xd, rv)
     end
   end
 end
 
 # preparation
 def alls(s, dict)
-  rv = [value: [], fit: false] # array of records to return
-  rvi = 0 # next index in array
+  rv = []
   xd = {}
+
+  # build NF dict
+  # NF: sorted letters of word
   dict.each do |k,v|
     key = sorts(k)
     if xd.has_key?(key)
@@ -43,8 +57,16 @@ def alls(s, dict)
       xd[key] = [k]
     end
   end
-  rec_s(s, 0, rv, rvi, xd)
-  return rv.select {|v| v[:fit]}
+
+  # get all posssible NF partitions for the string
+  rec_s(s, 0, [], xd, rv)
+
+  # print all posibilities for NF parition
+  all = []
+  rv.each do |v|
+    print_arr(v, 0, [], xd, all)
+  end
+  return all
 end
 
 # driver
@@ -60,4 +82,5 @@ s = "ymacr"
 
 puts "String: #{s}"
 puts "Dict: #{dict}"
+puts "Possible source strings:"
 pp alls(s, dict)
