@@ -1,2 +1,2 @@
 # HackerRank
-Solutions for HackRank
+Solutions for HackRank and similar sites
