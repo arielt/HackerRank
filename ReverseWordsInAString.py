@@ -1,3 +1,7 @@
+# Reverse Words in a String
+# Input: "the sky is blue"
+# Output: "blue is sky the"
+
 class Solution(object):
     def reverseWords(self, s):
         """
