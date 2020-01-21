@@ -12,7 +12,7 @@ class TrieNode:
     def has_no_key(self, char):
         return self.children[self.index(char)] is None
 
-    def insert(self, char):
+    def put(self, char):
         self.children[self.index(char)] = TrieNode()
     
     def get(self, char):
@@ -35,9 +35,9 @@ class Trie(object):
         node = self.root
         for c in word:
             if node.has_no_key(c):
-                node.insert(c)
+                node.put(c)
             node = node.get(c)
-        node.end = True
+        node.is_end = True
 
     def search(self, word):
         """
@@ -45,12 +45,12 @@ class Trie(object):
         :type word: str
         :rtype: bool
         """
-        node = root
+        node = self.root
         for c in word:
             if node.has_no_key(c):
                 return False
             node = node.get(c)
-        return node.end        
+        return node.is_end        
 
     def startsWith(self, prefix):
         """
@@ -58,9 +58,9 @@ class Trie(object):
         :type prefix: str
         :rtype: bool
         """
-        node = root
-        for c in word:
-            if node.no_key(c):
+        node = self.root
+        for c in prefix:
+            if node.has_no_key(c):
                 return False
             node = node.get(c)
         return True    
