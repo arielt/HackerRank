@@ -1,3 +1,5 @@
+# https://leetcode.com/problems/print-in-order/
+
 from threading import Lock
 
 class Foo(object):
