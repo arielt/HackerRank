@@ -12,6 +12,8 @@
 
 
 class Solution(object):
+    MAX_INT = 2147483647
+
     def reverse(self, x):
         """
         :type x: int
@@ -25,7 +27,7 @@ class Solution(object):
             y = y/10
             r = r*10 + t
 
-        if r > 2147483647:
+        if r > self.MAX_INT:
             return 0
 
         if x < 0:
